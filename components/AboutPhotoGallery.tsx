@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
+import { assetPath } from "@/content/assetPath";
 import type { AboutPhoto } from "@/content/site";
 
 export default function AboutPhotoGallery({ photos }: { photos: AboutPhoto[] }) {
@@ -26,7 +27,7 @@ export default function AboutPhotoGallery({ photos }: { photos: AboutPhoto[] }) 
               className={`about-photo about-photo--${photo.ratio} group`}
             >
               <Image
-                src={photo.src}
+                src={assetPath(photo.src)}
                 alt={photo.alt}
                 fill
                 sizes="(max-width: 640px) 46vw, (max-width: 1024px) 30vw, 22vw"
@@ -77,7 +78,7 @@ export default function AboutPhotoGallery({ photos }: { photos: AboutPhoto[] }) 
               Close <span aria-hidden="true">×</span>
             </button>
             <Image
-              src={selectedPhoto.src}
+              src={assetPath(selectedPhoto.src)}
               alt={selectedPhoto.alt}
               fill
               sizes="min(90vw, 1200px)"

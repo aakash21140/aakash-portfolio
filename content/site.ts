@@ -322,19 +322,19 @@ export type AboutPhoto = {
 
 export const aboutPhotos: AboutPhoto[] = [
   {
-    src: assetPath("/about/aakash-portrait.webp"),
+    src: "/about/aakash-portrait.webp",
     alt: "Portrait wearing a charcoal blazer in a warmly lit interior",
     caption: "A little about me",
     ratio: "portrait",
   },
   {
-    src: assetPath("/about/city-portrait.webp"),
+    src: "/about/city-portrait.webp",
     alt: "Standing on a rooftop with the city skyline behind",
     caption: "A moment in the city",
     ratio: "square",
   },
   {
-    src: assetPath("/about/clouds-portrait.webp"),
+    src: "/about/clouds-portrait.webp",
     alt: "Relaxing above the clouds in a white shirt",
     caption: "A change in perspective",
     ratio: "square",
