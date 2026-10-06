@@ -2,7 +2,7 @@
 
 import { useEffect, type ComponentProps } from "react";
 import { assetPath } from "@/content/assetPath";
-import { navigateToSection } from "./sectionNavigation";
+import { isSamePathname, navigateToSection } from "./sectionNavigation";
 
 type SectionLinkProps = Omit<ComponentProps<"a">, "href"> & {
   href: string;
@@ -21,7 +21,7 @@ export default function SectionLink({ href, sectionId, onClick, ...props }: Sect
     }
 
     const destination = new URL(destinationHref, window.location.href);
-    if (destination.pathname !== window.location.pathname || destination.hash !== window.location.hash) {
+    if (!isSamePathname(destination.pathname, window.location.pathname) || destination.hash !== window.location.hash) {
       return;
     }
 
