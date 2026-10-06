@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { assetPath } from "@/content/assetPath";
 import { profile } from "@/content/site";
+import SectionLink from "./SectionLink";
 import Magnetic from "./Magnetic";
 
 const rise = {
@@ -97,23 +97,25 @@ export default function Hero() {
             className="mt-10 flex flex-wrap items-center gap-3"
           >
             <Magnetic>
-              <Link
+              <SectionLink
                 href="/#work"
+                sectionId="work"
                 data-cursor="view"
                 className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-medium text-bg transition-transform hover:-translate-y-0.5"
               >
                 See the work
                 <span className="transition-transform group-hover:translate-x-0.5">→</span>
-              </Link>
+              </SectionLink>
             </Magnetic>
             <Magnetic>
-              <Link
+              <SectionLink
                 href="/#contact"
+                sectionId="contact"
                 data-cursor="open"
                 className="inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-sm text-muted transition-colors hover:border-accent/50 hover:text-ink"
               >
                 Get in touch <span className="text-xs">↗</span>
-              </Link>
+              </SectionLink>
             </Magnetic>
           </motion.div>
 

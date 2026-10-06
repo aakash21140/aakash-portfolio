@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { profile } from "@/content/site";
+import SectionLink from "./SectionLink";
 
 const links = [
   { label: "Home", href: "/#top", id: "top" },
@@ -49,7 +49,7 @@ export default function Nav() {
       }`}
     >
       <nav className="mx-auto flex max-w-[1240px] items-center justify-between px-5 py-4 md:px-10">
-        <Link         href="/#top" className="group flex items-center gap-2.5">
+        <SectionLink href="/#top" sectionId="top" className="group flex items-center gap-2.5">
           <span className="relative flex h-2.5 w-2.5">
             <span className="pulse-ring absolute inline-flex h-full w-full rounded-full bg-accent/70" />
             <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent" />
@@ -58,13 +58,14 @@ export default function Nav() {
             {profile.name.split(" ")[0]}
             <span className="text-muted">.{profile.name.split(" ")[1]?.toLowerCase()}</span>
           </span>
-        </Link>
+        </SectionLink>
 
         <div className="hidden items-center gap-2 md:flex">
           {links.map((l) => (
-            <Link
+            <SectionLink
               key={l.href}
               href={l.href}
+              sectionId={l.id}
               aria-current={active === l.id ? "true" : undefined}
               data-cursor={l.id === "contact" ? "say hi" : undefined}
               className={
@@ -83,7 +84,7 @@ export default function Nav() {
                 />
               )}
               <span className="relative">{l.label}</span>
-            </Link>
+            </SectionLink>
           ))}
         </div>
 
@@ -116,16 +117,17 @@ export default function Nav() {
           >
             <div className="flex flex-col gap-4 px-5 py-4">
               {links.map((l) => (
-                <Link
+                <SectionLink
                   key={l.href}
                   href={l.href}
+                  sectionId={l.id}
                   onClick={() => setOpen(false)}
                   className={`font-mono text-xs tracking-[0.18em] uppercase ${
                     active === l.id ? "text-accent" : "text-muted"
                   }`}
                 >
                   {l.label}
-                </Link>
+                </SectionLink>
               ))}
             </div>
           </motion.div>

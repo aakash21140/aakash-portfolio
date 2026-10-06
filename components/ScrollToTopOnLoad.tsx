@@ -5,7 +5,7 @@ import { useLayoutEffect } from "react";
 export default function ScrollToTopOnLoad() {
   useLayoutEffect(() => {
     if ("scrollRestoration" in history) {
-      history.scrollRestoration = "manual";
+      history.scrollRestoration = "auto";
     }
 
     let userInteracted = false;
@@ -22,7 +22,6 @@ export default function ScrollToTopOnLoad() {
         resetScroll();
       }
     };
-
     for (const eventName of ["pointerdown", "keydown", "touchstart", "wheel"]) {
       window.addEventListener(eventName, markInteraction, {
         capture: true,
