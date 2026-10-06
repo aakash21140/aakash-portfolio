@@ -1,19 +1,12 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import { useFinePointer } from "@/hooks/useFinePointer";
+import "./styles/Cursor.css";
 
-/**
- * A follower ring that trails the native cursor and reacts to interactive
- * elements. The native cursor is never hidden — this only adds feedback.
- * Elements can set `data-cursor="label"` to show a label inside the ring.
- */
 export default function Cursor() {
-  const x = useMotionValue(-100);
-  const y = useMotionValue(-100);
-  const sx = useSpring(x, { stiffness: 450, damping: 36, mass: 0.35 });
-  const sy = useSpring(y, { stiffness: 450, damping: 36, mass: 0.35 });
+  const cursorRef = useRef<HTMLDivElement>(null);
   const [label, setLabel] = useState<string | null>(null);
   const [active, setActive] = useState(false);
   const enabled = useFinePointer();
@@ -21,52 +14,55 @@ export default function Cursor() {
   useEffect(() => {
     if (!enabled) return;
 
-    const onMove = (e: PointerEvent) => {
-      x.set(e.clientX);
-      y.set(e.clientY);
-      const hit = (e.target as HTMLElement | null)?.closest<HTMLElement>(
+    const cursor = cursorRef.current;
+    if (!cursor) return;
+
+    const xTo = gsap.quickTo(cursor, "x", { duration: 0.12, ease: "power3.out" });
+    const yTo = gsap.quickTo(cursor, "y", { duration: 0.12, ease: "power3.out" });
+    let activeTarget: HTMLElement | null = null;
+
+    const onPointerMove = (event: PointerEvent) => {
+      xTo(event.clientX);
+      yTo(event.clientY);
+
+      const target = (event.target as Element | null)?.closest<HTMLElement>(
         "a, button, [data-cursor]",
-      );
-      setActive(Boolean(hit));
-      setLabel(hit?.dataset.cursor ?? null);
-    };
-    const onLeave = () => {
-      x.set(-100);
-      y.set(-100);
+      ) ?? null;
+
+      if (target === activeTarget) return;
+
+      activeTarget = target;
+      setActive(Boolean(target));
+      setLabel(target?.dataset.cursor ?? null);
     };
 
-    window.addEventListener("pointermove", onMove, { passive: true });
-    document.addEventListener("pointerleave", onLeave);
-    return () => {
-      window.removeEventListener("pointermove", onMove);
-      document.removeEventListener("pointerleave", onLeave);
+    const onPointerLeave = () => {
+      activeTarget = null;
+      setActive(false);
+      setLabel(null);
+      xTo(-100);
+      yTo(-100);
     };
-  }, [x, y, enabled]);
+
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    document.addEventListener("pointerleave", onPointerLeave);
+
+    return () => {
+      window.removeEventListener("pointermove", onPointerMove);
+      document.removeEventListener("pointerleave", onPointerLeave);
+      gsap.killTweensOf(cursor);
+    };
+  }, [enabled]);
 
   if (!enabled) return null;
 
   return (
-    <motion.div
-      aria-hidden
-      style={{ x: sx, y: sy }}
-      className="pointer-events-none fixed top-0 left-0 z-[70] -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
+    <div
+      aria-hidden="true"
+      className={`cursor-main${active ? " is-active" : ""}${label ? " has-label" : ""}`}
+      ref={cursorRef}
     >
-      <motion.div
-        animate={{
-          width: label ? 86 : active ? 44 : 26,
-          height: label ? 32 : active ? 44 : 26,
-          borderRadius: label ? 16 : 999,
-          opacity: active || label ? 1 : 0.5,
-        }}
-        transition={{ type: "spring", stiffness: 380, damping: 30 }}
-        className="flex items-center justify-center border border-white/80"
-      >
-        {label && (
-          <span className="font-mono text-[9px] tracking-[0.14em] text-white uppercase">
-            {label}
-          </span>
-        )}
-      </motion.div>
-    </motion.div>
+      {label && <span className="cursor-label">{label}</span>}
+    </div>
   );
 }

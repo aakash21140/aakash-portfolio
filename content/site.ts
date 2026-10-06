@@ -20,7 +20,7 @@ export const profile = {
   location: "Bengaluru, IN",
   available: "Open to implementation & platform integration roles",
   email: "aakash@example.com", // SAMPLE
-  resumeUrl: "#", // SAMPLE — link a real résumé PDF
+  resumeUrl: "/Virgio_resume copy.pdf", // Place this file at public/Virgio_resume copy.pdf
   socials: [
     { label: "LinkedIn", href: "https://linkedin.com/in/example" }, // SAMPLE
     { label: "GitHub", href: "https://github.com/example" }, // SAMPLE
@@ -311,11 +311,32 @@ export const timeline = [
   },
 ];
 
-export const gallery = [
-  { caption: "cutover night", sub: "war room", label: "Photo slot" },
-  { caption: "whiteboard mapping", sub: "field by field", label: "Photo slot" },
-  { caption: "on-site UAT", sub: "client floor", label: "Photo slot" },
-  { caption: "post go-live", sub: "the quiet dashboard", label: "Photo slot" },
+export type AboutPhoto = {
+  src: string;
+  alt: string;
+  caption?: string;
+  ratio: "portrait" | "landscape" | "square";
+};
+
+export const aboutPhotos: AboutPhoto[] = [
+  {
+    src: "/about/aakash-portrait.webp",
+    alt: "Portrait wearing a charcoal blazer in a warmly lit interior",
+    caption: "A little about me",
+    ratio: "portrait",
+  },
+  {
+    src: "/about/city-portrait.webp",
+    alt: "Standing on a rooftop with the city skyline behind",
+    caption: "A moment in the city",
+    ratio: "square",
+  },
+  {
+    src: "/about/clouds-portrait.webp",
+    alt: "Relaxing above the clouds in a white shirt",
+    caption: "A change in perspective",
+    ratio: "square",
+  },
 ];
 
 export const about = {

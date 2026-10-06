@@ -1,7 +1,7 @@
-import { about, gallery, profile, timeline } from "@/content/site";
+import { about, aboutPhotos, profile, timeline } from "@/content/site";
 import Reveal from "./Reveal";
 import Section from "./Section";
-import Slot from "./Slot";
+import AboutPhotoGallery from "./AboutPhotoGallery";
 
 export default function About() {
   return (
@@ -36,21 +36,15 @@ export default function About() {
           </Reveal>
         </div>
 
-        <div className="grid grid-cols-2 gap-4 self-start">
-          {gallery.map((g, i) => (
-            <Reveal key={g.caption} delay={i * 0.07} className={i % 3 === 0 ? "col-span-2" : ""}>
-              <Slot
-                label={g.label}
-                ratio={i % 3 === 0 ? "aspect-[16/9]" : "aspect-square"}
-                accent={i % 2 ? "#7b8cff" : "#38e1cf"}
-              />
-              <p className="mt-2 flex items-baseline justify-between font-mono text-[10px] tracking-[0.16em] text-muted uppercase">
-                <span className="text-ink">{g.caption}</span>
-                <span>{g.sub}</span>
-              </p>
-            </Reveal>
-          ))}
-          <Reveal className="col-span-2 rounded-2xl border border-line bg-panel/40 p-5">
+        <div className="self-start">
+          <Reveal>
+            <p className="eyebrow">A little beyond the day job</p>
+            <h3 className="mt-3 text-xl font-medium tracking-tight md:text-2xl">
+              A few frames from my world.
+            </h3>
+          </Reveal>
+          <AboutPhotoGallery photos={aboutPhotos} />
+          <Reveal className="mt-5 rounded-2xl border border-line bg-panel/40 p-5">
             <p className="eyebrow">Based in</p>
             <p className="mt-2 text-lg">{profile.location}</p>
           </Reveal>

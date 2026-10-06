@@ -1,8 +1,8 @@
 # Aakash Kumar — portfolio
 
-Next.js 16 (App Router, Turbopack) + Tailwind v4 + Framer Motion. Dark, motion-heavy
-single-page portfolio with case-study detail routes, styled after sameerkapil.com but
-themed for integration/implementation work.
+Next.js 16 (App Router, Turbopack) + Tailwind v4 + Framer Motion. Airy, editorial
+portfolio with a cloudscape hero, personal photo gallery, and case-study detail routes
+for integration/implementation work.
 
 ```bash
 npm run dev     # http://localhost:3000
@@ -22,12 +22,32 @@ metric and link is invented.
 - `stats`, `marqueeTop`, `marqueeWarn`, `contact` — strips and CTA copy.
 - `caseStudies[]` — each entry generates a card on `/`, a tile on `/work`, and a static
   page at `/work/<slug>` (`generateStaticParams`).
-- `process`, `toolbox`, `timeline`, `gallery`, `about` — lower sections.
+- `process`, `toolbox`, `timeline`, `about`, and `aboutPhotos` — lower sections and About
+  content. `aboutPhotos` points to the local About gallery images in `public/about/`.
 
 ## Images
 
-There are no real assets yet. `components/Slot.tsx` draws a labelled placeholder panel;
-replace each `<Slot …/>` with `next/image` once screenshots and photos exist.
+Case studies use clearly labelled placeholders in `components/Slot.tsx`. About photos are
+stored in `public/about/`; replace or add optimized images there and update `aboutPhotos` in
+`content/site.ts`, for example:
+
+```ts
+export const aboutPhotos: AboutPhoto[] = [
+  {
+    src: "/about/my-photo.webp",
+    alt: "A descriptive sentence about the photo",
+    caption: "Optional short caption",
+    ratio: "portrait",
+  },
+];
+```
+
+Supported gallery ratios are `portrait`, `landscape`, and `square`. The responsive gallery
+uses local images, descriptive alt text, lazy loading, and a keyboard-accessible enlarge
+dialog. No upload service or backend is required.
+
+The Contact section links to the email and profiles in `profile`. There is no form because
+this project does not have a configured form submission service.
 
 ## Motion & interaction
 

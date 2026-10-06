@@ -1,0 +1,48 @@
+.cursor-main {
+ position: fixed;
+ top: 0;
+ left: 0;
+ display: flex;
+ width: 26px;
+ height: 26px;
+ align-items: center;
+ justify-content: center;
+ margin: -13px 0 0 -13px;
+ border: 1px solid rgba(255, 255, 255, 0.8);
+ border-radius: 50%;
+ pointer-events: none;
+ z-index: 70;
+ opacity: 0.55;
+ mix-blend-mode: difference;
+ will-change: transform, width, height;
+ transition:
+   width 180ms ease,
+   height 180ms ease,
+   margin 180ms ease,
+   border-radius 180ms ease,
+   opacity 180ms ease;
+}
+
+.cursor-main.is-active {
+ opacity: 1;
+}
+
+.cursor-main.has-label {
+ width: 88px;
+ height: 34px;
+ margin: -17px 0 0 -44px;
+ border-radius: 17px;
+}
+
+.cursor-label {
+ overflow: hidden;
+ max-width: 100%;
+ padding: 0 8px;
+ color: #fff;
+ font-family: var(--font-geist-mono), ui-monospace, monospace;
+ font-size: 9px;
+ letter-spacing: 0.14em;
+ text-overflow: ellipsis;
+ text-transform: uppercase;
+ white-space: nowrap;
+}

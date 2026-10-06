@@ -21,7 +21,11 @@ export default function Home() {
       <Section
         id="work"
         eyebrow="Selected work"
-        title="Case studies"
+        title={
+          <>
+            Selected <span className="text-accent italic">work</span>
+          </>
+        }
         aside={
           <Link
             href="/work"

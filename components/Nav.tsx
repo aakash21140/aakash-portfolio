@@ -6,11 +6,10 @@ import { useEffect, useState } from "react";
 import { profile } from "@/content/site";
 
 const links = [
-  { label: "Work", href: "/#work", id: "work" },
-  { label: "Playground", href: "/#playground", id: "playground" },
-  { label: "Process", href: "/#process", id: "process" },
-  { label: "Stack", href: "/#stack", id: "stack" },
-  { label: "About", href: "/#about", id: "about" },
+  { label: "Home", href: "/#top", id: "top" },
+  { label: "About me", href: "/#about", id: "about" },
+  { label: "My work", href: "/#work", id: "work" },
+  { label: "Contact", href: "/#contact", id: "contact" },
 ];
 
 export default function Nav() {
@@ -50,7 +49,7 @@ export default function Nav() {
       }`}
     >
       <nav className="mx-auto flex max-w-[1240px] items-center justify-between px-5 py-4 md:px-10">
-        <Link href="/" className="group flex items-center gap-2.5">
+        <Link         href="/#top" className="group flex items-center gap-2.5">
           <span className="relative flex h-2.5 w-2.5">
             <span className="pulse-ring absolute inline-flex h-full w-full rounded-full bg-accent/70" />
             <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent" />
@@ -67,11 +66,16 @@ export default function Nav() {
               key={l.href}
               href={l.href}
               aria-current={active === l.id ? "true" : undefined}
-              className={`relative rounded-full px-3 py-1.5 font-mono text-[11px] tracking-[0.18em] uppercase transition-colors ${
-                active === l.id ? "text-ink" : "text-muted hover:text-ink"
-              }`}
+              data-cursor={l.id === "contact" ? "say hi" : undefined}
+              className={
+                l.id === "contact"
+                  ? "ml-4 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 font-mono text-[11px] tracking-[0.18em] text-accent uppercase transition-colors hover:bg-accent/20"
+                  : `relative rounded-full px-3 py-1.5 font-mono text-[11px] tracking-[0.18em] uppercase transition-colors ${
+                      active === l.id ? "text-ink" : "text-muted hover:text-ink"
+                    }`
+              }
             >
-              {active === l.id && (
+              {l.id !== "contact" && active === l.id && (
                 <motion.span
                   layoutId="nav-active"
                   className="absolute inset-0 rounded-full border border-line bg-white/5"
@@ -81,13 +85,6 @@ export default function Nav() {
               <span className="relative">{l.label}</span>
             </Link>
           ))}
-          <Link
-            href="/#contact"
-            data-cursor="say hi"
-            className="ml-4 rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 font-mono text-[11px] tracking-[0.18em] text-accent uppercase transition-colors hover:bg-accent/20"
-          >
-            Contact
-          </Link>
         </div>
 
         <button
@@ -118,7 +115,7 @@ export default function Nav() {
             className="overflow-hidden border-t border-line bg-bg/95 backdrop-blur-xl md:hidden"
           >
             <div className="flex flex-col gap-4 px-5 py-4">
-              {[...links, { label: "Contact", href: "/#contact", id: "contact" }].map((l) => (
+              {links.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
