@@ -10,6 +10,14 @@ npm run build   # static export of / , /work , /work/[slug]
 npm run lint
 ```
 
+## GitHub Pages deployment
+
+The included GitHub Actions workflow builds and deploys this repository to GitHub
+Pages. In the repository settings, set **Pages → Build and deployment → Source** to
+**GitHub Actions**. The build uses the repository name as the URL base path, disables
+the server-only Next.js image optimizer for static hosting, and exports the site to
+`out/`.
+
 ## Editing content
 
 **All copy lives in `content/site.ts`.** Nothing is hardcoded in components except
@@ -41,6 +49,9 @@ export const aboutPhotos: AboutPhoto[] = [
   },
 ];
 ```
+
+The image paths in `aboutPhotos` are automatically prefixed for GitHub Pages project
+URLs; keep them relative to `public/` as in the example above.
 
 Supported gallery ratios are `portrait`, `landscape`, and `square`. The responsive gallery
 uses local images, descriptive alt text, lazy loading, and a keyboard-accessible enlarge

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { profile } from "@/content/site";
+import { assetPath, profile } from "@/content/site";
 import Magnetic from "./Magnetic";
 
 const rise = {
@@ -29,7 +29,7 @@ export default function Hero() {
     >
       <div className="hero-portrait absolute inset-y-0 right-0 w-[82%] md:w-[59%]">
         <Image
-          src="/about/clouds-portrait.webp"
+          src={assetPath("/about/clouds-portrait.webp")}
           alt="Aakash relaxing above the clouds"
           fill
           priority

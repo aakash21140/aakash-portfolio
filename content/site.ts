@@ -8,6 +8,12 @@
  * and the placeholder labels on image slots.
  * ==========================================================================*/
 
+const assetBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+export function assetPath(path: string) {
+  return `${assetBasePath}${path}`;
+}
+
 export const SAMPLE_CONTENT = true;
 
 export const profile = {
@@ -20,7 +26,7 @@ export const profile = {
   location: "Bengaluru, IN",
   available: "Open to implementation & platform integration roles",
   email: "aakash@example.com", // SAMPLE
-  resumeUrl: "/Virgio_resume copy.pdf", // Place this file at public/Virgio_resume copy.pdf
+  resumeUrl: assetPath("/Virgio_resume copy.pdf"), // Place this file at public/Virgio_resume copy.pdf
   socials: [
     { label: "LinkedIn", href: "https://linkedin.com/in/example" }, // SAMPLE
     { label: "GitHub", href: "https://github.com/example" }, // SAMPLE
@@ -320,19 +326,19 @@ export type AboutPhoto = {
 
 export const aboutPhotos: AboutPhoto[] = [
   {
-    src: "/about/aakash-portrait.webp",
+    src: assetPath("/about/aakash-portrait.webp"),
     alt: "Portrait wearing a charcoal blazer in a warmly lit interior",
     caption: "A little about me",
     ratio: "portrait",
   },
   {
-    src: "/about/city-portrait.webp",
+    src: assetPath("/about/city-portrait.webp"),
     alt: "Standing on a rooftop with the city skyline behind",
     caption: "A moment in the city",
     ratio: "square",
   },
   {
-    src: "/about/clouds-portrait.webp",
+    src: assetPath("/about/clouds-portrait.webp"),
     alt: "Relaxing above the clouds in a white shirt",
     caption: "A change in perspective",
     ratio: "square",
