@@ -23,7 +23,6 @@ export const profile = {
 export const stats = [
   { value: 2, suffix: "", label: "professional roles", decimals: 0 },
   { value: 3, suffix: "", label: "implementation strengths", decimals: 0 },
-  { value: 7.39, suffix: "", label: "B.Tech CGPA", decimals: 2 },
   { value: 4, suffix: " yrs", label: "studying computer science", decimals: 0 },
 ];
 
@@ -259,7 +258,7 @@ export const education = [
     period: "2021 — 2025",
     qualification: "B.Tech in Computer Science & Engineering",
     institution: "Kalinga University, Raipur",
-    detail: "CGPA 7.39",
+    detail: "",
   },
   {
     period: "2019 — 2021",
