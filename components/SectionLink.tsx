@@ -13,6 +13,13 @@ export default function SectionLink({ href, sectionId, onClick, ...props }: Sect
   const destinationHref = assetPath(href);
 
   useEffect(() => {
+    const navigationEntry = performance.getEntriesByType("navigation").find(
+      (entry): entry is PerformanceNavigationTiming => entry.entryType === "navigation",
+    );
+    if (navigationEntry?.type === "reload") {
+      return;
+    }
+
     const destination = new URL(destinationHref, window.location.href);
     if (destination.pathname !== window.location.pathname || destination.hash !== window.location.hash) {
       return;
