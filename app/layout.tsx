@@ -8,6 +8,7 @@ import SampleBanner from "@/components/SampleBanner";
 import Cursor from "@/components/Cursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import { profile } from "@/content/site";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <Footer />
         <SampleBanner />
+        <SpeedInsights />
       </body>
     </html>
   );
