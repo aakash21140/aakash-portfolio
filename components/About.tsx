@@ -1,11 +1,11 @@
-import { about, aboutPhotos, profile, timeline } from "@/content/site";
+import { about, aboutPhotos, education, profile, timeline } from "@/content/site";
 import Reveal from "./Reveal";
 import Section from "./Section";
 import AboutPhotoGallery from "./AboutPhotoGallery";
 
 export default function About() {
   return (
-    <Section id="about" eyebrow="Beyond the integrations" title={about.heading}>
+    <Section id="about" eyebrow="About me" title={about.heading}>
       <div className="mt-14 grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
         <div>
           <div className="space-y-5 text-sm leading-relaxed text-muted md:text-base">
@@ -30,6 +30,25 @@ export default function About() {
                     {t.role} <span className="text-muted">· {t.org}</span>
                   </p>
                   <p className="mt-1 text-sm text-muted">{t.note}</p>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
+
+          <Reveal className="mt-12">
+            <h3 className="eyebrow">Education</h3>
+            <ol className="mt-6 border-l border-line">
+              {education.map((item) => (
+                <li key={item.qualification} className="relative pb-7 pl-6 last:pb-0">
+                  <span className="absolute -left-[3px] top-2 h-1.5 w-1.5 rounded-full bg-accent" />
+                  <p className="font-mono text-[11px] tracking-[0.18em] text-muted uppercase">
+                    {item.period}
+                  </p>
+                  <p className="mt-2 text-base text-ink">{item.qualification}</p>
+                  <p className="mt-1 text-sm text-muted">
+                    {item.institution}
+                    {item.detail && <span> · {item.detail}</span>}
+                  </p>
                 </li>
               ))}
             </ol>

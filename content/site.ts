@@ -1,51 +1,41 @@
-/* ============================================================================
- * SAMPLE CONTENT — PLACEHOLDER ONLY
- * ----------------------------------------------------------------------------
- * Every string, number, metric, logo and client name in this file is invented
- * for layout purposes. Nothing here has been verified against Aakash Kumar's
- * real experience. Replace the values below with real content, then flip
- * `SAMPLE_CONTENT` to `false` to hide the site-wide "sample content" banner
- * and the placeholder labels on image slots.
- * ==========================================================================*/
-
 import { assetPath } from "./assetPath";
 
-export const SAMPLE_CONTENT = true;
+export const SAMPLE_CONTENT = false;
 
 export const profile = {
   name: "Aakash Kumar",
-  role: "Integration & Implementation Engineer",
-  tagline: "I make other people's systems agree with each other.",
+  role: "Implementation Engineer",
+  tagline: "Turning technical setups into confident client handoffs.",
   headline: ["I ship integrations", "that {survive} production."],
   subhead:
-    "Integration and implementation engineer. APIs, middleware, data contracts, and the unglamorous go-live work that decides whether a rollout lands.",
-  location: "Bengaluru, IN",
-  available: "Open to implementation & platform integration roles",
-  email: "aakash@example.com", // SAMPLE
-  resumeUrl: assetPath("/Virgio_resume copy.pdf"), // Place this file at public/Virgio_resume copy.pdf
+    "I deploy and configure software, validate APIs, investigate system issues, and help clients get from onboarding to a working launch.",
+  location: "Bengaluru, India",
+  focus: "Software deployment · API testing · client onboarding",
+  email: "officialaakash21140@gmail.com",
+  resumeUrl: assetPath("/Aakash Kumar Resume.pdf"),
   socials: [
-    { label: "LinkedIn", href: "https://linkedin.com/in/example" }, // SAMPLE
-    { label: "GitHub", href: "https://github.com/example" }, // SAMPLE
-    { label: "Email", href: "mailto:aakash@example.com" }, // SAMPLE
+    { label: "LinkedIn", href: "https://linkedin.com/in/aakash-kumar-0226a7393" },
+    { label: "GitHub", href: "https://github.com/aakash21140" },
+    { label: "Email", href: "mailto:officialaakash21140@gmail.com" },
   ],
 };
 
 export const stats = [
-  { value: 120, suffix: "+", label: "integrations shipped", decimals: 0 },
-  { value: 42, suffix: "", label: "enterprise go-lives", decimals: 0 },
-  { value: 99.98, suffix: "%", label: "pipeline uptime held", decimals: 2 },
-  { value: 6, suffix: "yrs", label: "in the middle layer", decimals: 0 },
+  { value: 2, suffix: "", label: "professional roles", decimals: 0 },
+  { value: 3, suffix: "", label: "implementation strengths", decimals: 0 },
+  { value: 7.39, suffix: "", label: "B.Tech CGPA", decimals: 2 },
+  { value: 4, suffix: " yrs", label: "studying computer science", decimals: 0 },
 ];
 
 export const marqueeTop =
-  "REST · SOAP · webhooks · SFTP batch · Kafka · OAuth2 · mTLS · idempotency keys · dead-letter queues · retries with backoff · ";
+  "software deployment · API validation · client onboarding · system configuration · integration debugging · network security · ";
 
 export const marqueeWarn =
-  "never trust an upstream payload · never trust an upstream payload · log the correlation id · log the correlation id · ";
+  "configure with care · test the endpoint · follow the logs · make the handoff clear · ";
 
 export const contact = {
-  eyebrow: "Next system",
-  heading: "Got two systems that refuse to talk?",
+  eyebrow: "Have a rollout in mind?",
+  heading: "Let’s make the technical side feel straightforward.",
 };
 
 export type CaseStudy = {
@@ -54,9 +44,10 @@ export type CaseStudy = {
   title: string;
   summary: string;
   metric: string;
-  year: string;
+  period: string;
   role: string;
-  duration: string;
+  setting: string;
+  repositoryUrl?: string;
   tags: string[];
   accent: string;
   imageLabel: string;
@@ -71,245 +62,210 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "order-sync",
+    slug: "enterprise-software-implementation",
     index: "01",
-    title: "Rebuilding Order Sync Between ERP and Storefront",
+    title: "From software setup to client-ready",
     summary:
-      "A nightly batch that silently dropped orders became an event-driven pipeline with replay, reconciliation, and a dashboard ops could actually read.",
-    metric: "−93% order discrepancies",
-    year: "2025",
-    role: "Lead integration engineer",
-    duration: "14 weeks",
-    tags: ["Kafka", "ERP", "Reconciliation"],
+      "Deploying and configuring tailored software, validating APIs, and supporting client onboarding and end-to-end system tests.",
+    metric: "Deployment · API testing · onboarding",
+    period: "Feb 2026 — Present",
+    role: "Implementation Engineer",
+    setting: "Virgio (Ameyam Enterprises Pvt. Ltd.)",
+    tags: ["Software deployment", "API testing", "Client onboarding"],
     accent: "#38e1cf",
-    imageLabel: "Pipeline topology diagram",
+    imageLabel: "A clear path from setup to handoff",
     context:
-      "SAMPLE: A mid-market retailer ran order sync as a nightly SFTP batch between the storefront and a legacy ERP. When a file failed, nobody found out until a customer called.",
+      "At Virgio, I work on software implementation for enterprise clients—configuring solutions around operational requirements and supporting the technical work that brings them into use.",
     problem: [
-      "Batch window could not keep up with same-day fulfilment promises.",
-      "Partial file failures were invisible — no per-record status, no replay.",
-      "Finance reconciled by hand every Monday against two sources of truth.",
+      "A useful implementation has to fit the way each client operates.",
+      "Endpoints and integrations need to be checked, not just assumed to work.",
+      "Clients need a smooth path through onboarding, testing, and deployment.",
     ],
     approach: [
       {
-        title: "Map the contract before writing code",
-        body: "Catalogued every field both systems claimed to own, then wrote one canonical order schema with explicit ownership per field. Disagreements got resolved in a document, not in production.",
+        title: "Start with the operational need",
+        body: "Deploy and configure software solutions to match enterprise client requirements.",
       },
       {
-        title: "Events first, batch as fallback",
-        body: "Storefront publishes order events to Kafka; a transform service projects them to the ERP's IDoc format. The old batch stayed live as a shadow path for six weeks so we could diff outputs.",
+        title: "Check the API boundary",
+        body: "Use Postman for API testing, endpoint validation, and integration debugging.",
       },
       {
-        title: "Make failure a first-class state",
-        body: "Every message carries a correlation id. Failures land in a dead-letter topic with the original payload and the rejecting system's error, replayable from an ops screen without an engineer.",
+        title: "Follow issues to their source",
+        body: "Investigate application, server, and system logs to help resolve production issues.",
       },
       {
-        title: "Reconcile automatically",
-        body: "A daily job compares both ledgers and files discrepancies as tickets with the diff attached, so finance stopped doing it in a spreadsheet.",
+        title: "Stay through the handoff",
+        body: "Support client onboarding, end-to-end system testing, and technical deployment activities.",
       },
     ],
-    flow: ["Storefront", "Event bus", "Transform + validate", "ERP adapter", "Reconcile & alert"],
+    flow: ["Client requirements", "Configuration", "API validation", "System testing", "Onboarding"],
     outcome: [
-      { value: "−93%", label: "order discrepancies" },
-      { value: "4 hrs → 40 s", label: "end-to-end latency" },
-      { value: "0", label: "manual replays per week" },
+      { value: "Configured", label: "for enterprise client requirements" },
+      { value: "Validated", label: "APIs and integration endpoints" },
+      { value: "Supported", label: "onboarding and end-to-end testing" },
     ],
-    stack: ["Kafka", "Java", "SAP IDoc", "Postgres", "Grafana", "PagerDuty"],
+    stack: ["Postman", "REST APIs", "System logs"],
     learned:
-      "SAMPLE: Shadow-running the old path was the whole project. Nobody approves a cutover on a diagram; they approve it on two weeks of identical output.",
+      "A launch feels smoother when the setup matches the work, the endpoints have been checked, and people know what happens next.",
   },
   {
-    slug: "payments-onboarding",
+    slug: "realtime-location-tracker",
     index: "02",
-    title: "Cutting Partner Payment Onboarding From Weeks to Days",
+    title: "A live map for connected locations",
     summary:
-      "Turned a bespoke, engineer-attended integration into a self-serve sandbox with a certification suite partners run themselves.",
-    metric: "18 days → 3 days median",
-    year: "2024",
-    role: "Implementation engineer",
-    duration: "2 quarters",
-    tags: ["Payments", "Sandbox", "Developer experience"],
+      "A browser geolocation demo that streams live coordinates to a Leaflet map using Express and Socket.IO.",
+    metric: "Geolocation · Socket.IO · Leaflet",
+    period: "GitHub project",
+    role: "Full-stack project",
+    setting: "Realtime_LiveTracker",
+    repositoryUrl: "https://github.com/aakash21140/Realtime_LiveTracker",
+    tags: ["JavaScript", "Express", "Socket.IO", "Leaflet"],
     accent: "#7b8cff",
-    imageLabel: "Partner certification console",
+    imageLabel: "Live location updates on a shared map",
     context:
-      "SAMPLE: Every new payment partner needed an engineer on calls for three weeks. Onboarding was the bottleneck on a revenue target.",
+      "This browser-based project uses the Geolocation API to send location updates over Socket.IO, while Leaflet displays a marker for each connected client on a map.",
     problem: [
-      "Each partner interpreted the webhook spec differently; nobody failed loudly.",
-      "Credential and mTLS setup was a manual ticket chain across three teams.",
-      "No way to prove a partner was ready except to turn on live traffic.",
+      "A live view needs to reflect location updates as they arrive.",
+      "Each connected browser needs a distinct marker on the map.",
+      "Markers should be removed when their client disconnects.",
     ],
     approach: [
       {
-        title: "Write the spec as executable tests",
-        body: "Converted the integration guide into a 34-case certification suite covering signature verification, idempotent retries, and out-of-order webhooks. Pass the suite, get the production key.",
+        title: "Read location in the browser",
+        body: "Use the browser's Geolocation API to watch position updates, subject to the browser's permission prompt.",
       },
       {
-        title: "Sandbox with deliberate chaos",
-        body: "The sandbox replays duplicates, delays callbacks, and returns 5xx on demand, so partners discover their retry bugs before go-live instead of after.",
+        title: "Relay updates over sockets",
+        body: "An Express server uses Socket.IO to broadcast each connected client's latest coordinates.",
       },
       {
-        title: "Automate the credential chain",
-        body: "Self-serve certificate issuance and scoped API keys replaced the three-team ticket relay.",
-      },
-      {
-        title: "Instrument the funnel",
-        body: "Tracked where partners stalled per step, then rewrote the two doc sections where 60% of them stopped.",
+        title: "Keep the map in sync",
+        body: "Leaflet creates and updates client markers, then removes them when a socket disconnects.",
       },
     ],
-    flow: ["Partner signup", "Sandbox keys", "Certification suite", "Review gate", "Live traffic"],
+    flow: ["Browser permission", "Geolocation", "Socket.IO", "Express relay", "Leaflet map"],
     outcome: [
-      { value: "18 → 3 days", label: "median onboarding" },
-      { value: "−71%", label: "engineer hours per partner" },
-      { value: "0 P1s", label: "from newly onboarded partners" },
+      { value: "Live", label: "coordinate updates over sockets" },
+      { value: "Per-client", label: "map markers for connected browsers" },
+      { value: "Cleanup", label: "when a client disconnects" },
     ],
-    stack: ["Node.js", "OpenAPI", "mTLS", "Terraform", "Datadog"],
+    stack: ["JavaScript", "Node.js", "Express", "Socket.IO", "Leaflet", "OpenStreetMap"],
     learned:
-      "SAMPLE: Documentation that cannot fail a build is a suggestion. The certification suite did more for quality than any rewrite of the guide.",
+      "Location is sensitive: this prototype is for demonstrating live updates, not for tracking people without explicit consent and carefully scoped access.",
   },
   {
-    slug: "clinical-data-bridge",
+    slug: "checkpoint-network-security-lab",
     index: "03",
-    title: "Bridging a Legacy HL7 Feed Into a Modern FHIR API",
+    title: "A virtual lab for practical network security",
     summary:
-      "A translation layer that kept twenty-year-old hospital interfaces alive while new services consumed clean, versioned FHIR resources.",
-    metric: "11 sites migrated, zero downtime",
-    year: "2024",
-    role: "Integration engineer",
-    duration: "9 months",
-    tags: ["HL7 v2", "FHIR", "Healthcare"],
-    accent: "#ffcf5c",
-    imageLabel: "Message mapping worksheet",
+      "A VMware Workstation lab for exploring Check Point firewall policies, NAT, Anti-Spoofing, and service-based access controls.",
+    metric: "Check Point · VMware Workstation",
+    period: "Virtual lab project",
+    role: "Network security lab",
+    setting: "Self-directed technical project",
+    tags: ["Check Point", "Network security", "Virtual lab"],
+    accent: "#7b8cff",
+    imageLabel: "A virtual network security lab",
     context:
-      "SAMPLE: Eleven hospital sites emitted HL7 v2 messages with site-specific quirks. A new patient-facing product needed FHIR, and the sites could not be touched.",
+      "I built a virtual network security environment in VMware Workstation to simulate an enterprise setup and configure security policies in Check Point SmartConsole.",
     problem: [
-      "Each site had drifted from the standard in different, undocumented ways.",
-      "Patient identity differed per site; merging naively would cross records.",
-      "Clinical data cannot be dropped, deferred, or guessed at.",
+      "A virtual lab makes it possible to explore security policy configuration in a simulated environment.",
+      "Network controls need clear policy rules and explicit service boundaries.",
     ],
     approach: [
       {
-        title: "Quirk registry per site",
-        body: "Instead of one tolerant parser, each site got a declarative quirk profile. New site onboarding became config plus a test fixture, not a code change.",
+        title: "Build the virtual environment",
+        body: "Use VMware Workstation to simulate an enterprise network setup.",
       },
       {
-        title: "Identity before mapping",
-        body: "Built a deterministic matching step with an explicit human-review queue. Anything below the confidence threshold waits for a person — never auto-merged.",
+        title: "Configure firewall policies",
+        body: "Set up management, stealth, and NAT rules in Check Point SmartConsole.",
       },
       {
-        title: "Validate at the boundary",
-        body: "Every produced FHIR resource is validated against the profile before publish; rejects are quarantined with the source message attached.",
-      },
-      {
-        title: "Migrate one site at a time",
-        body: "Dual-write, compare, then cut. Each site had a rollback that was a single config flag.",
+        title: "Apply network protections",
+        body: "Configure Anti-Spoofing and service-based access controls for HTTP, HTTPS, and DNS.",
       },
     ],
-    flow: ["Site HL7 feed", "Quirk profile", "Identity resolution", "FHIR mapper", "Validation gate"],
+    flow: ["VMware Workstation", "Check Point SmartConsole", "Policy rules", "Anti-Spoofing", "Service controls"],
     outcome: [
-      { value: "11 sites", label: "migrated, zero downtime" },
-      { value: "100%", label: "messages accounted for or quarantined" },
-      { value: "2 days", label: "to onboard site #12" },
+      { value: "Management", label: "and stealth policy rules configured" },
+      { value: "NAT", label: "included in the firewall policy" },
+      { value: "HTTP · HTTPS · DNS", label: "service-based access controls" },
     ],
-    stack: ["HL7 v2", "FHIR R4", "Python", "Mirth", "Redis", "Kubernetes"],
+    stack: ["VMware Workstation", "Check Point SmartConsole", "NAT", "Anti-Spoofing"],
     learned:
-      "SAMPLE: In regulated data, 'drop the malformed ones' is never an option. A quarantine with a review queue beats a tolerant parser every time.",
-  },
-  {
-    slug: "ipaas-migration",
-    index: "04",
-    title: "Moving 60 Legacy Flows Off a Sunsetting iPaaS",
-    summary:
-      "A forced platform migration used as an excuse to delete a third of the flows and put the rest under version control and CI.",
-    metric: "60 flows, 21 retired",
-    year: "2023",
-    role: "Implementation lead",
-    duration: "7 months",
-    tags: ["Migration", "CI/CD", "Governance"],
-    accent: "#38e1cf",
-    imageLabel: "Flow inventory board",
-    context:
-      "SAMPLE: The vendor announced end-of-life with twelve months' notice. Sixty flows existed; nobody had a list of which ones still mattered.",
-    problem: [
-      "Flows were edited in a browser with no diff, review, or history.",
-      "Ownership was unknown for roughly half the inventory.",
-      "A hard vendor deadline with no option to slip.",
-    ],
-    approach: [
-      {
-        title: "Inventory and traffic-rank everything",
-        body: "Instrumented every flow for 30 days. Twenty-one had not fired once; they were retired with sign-off instead of migrated.",
-      },
-      {
-        title: "Code, not canvas",
-        body: "Rebuilt the survivors as versioned services with contract tests in CI. A flow change now goes through review like any other code.",
-      },
-      {
-        title: "Strangler cutover",
-        body: "Routed per-flow through a facade so each one could move independently, with rollback measured in minutes.",
-      },
-      {
-        title: "Leave a runbook behind",
-        body: "Every migrated flow shipped with an owner, an alert, and a one-page runbook. No flow goes live without all three.",
-      },
-    ],
-    flow: ["Inventory", "Traffic ranking", "Rebuild + tests", "Facade routing", "Decommission"],
-    outcome: [
-      { value: "39", label: "flows migrated on schedule" },
-      { value: "21", label: "flows retired, not rebuilt" },
-      { value: "−34%", label: "platform spend after cutover" },
-    ],
-    stack: ["Azure Functions", "Service Bus", "GitHub Actions", "Bicep", "App Insights"],
-    learned:
-      "SAMPLE: The cheapest migration is the one you do not do. Measuring usage first saved more time than any tooling decision.",
+      "A virtual lab makes security configuration tangible: policies, network protections, and service access can be explored together.",
   },
 ];
 
 export const process = [
   {
-    title: "Read the contract, not the diagram",
-    body: "Architecture slides lie by omission. The payload, the error codes, and the retry semantics are the real interface.",
+    title: "Understand the setup",
+    body: "Start with the client’s operational requirements so configuration has a clear purpose.",
   },
   {
-    title: "Assume every upstream will misbehave",
-    body: "Duplicates, out-of-order delivery, and nulls in required fields are normal traffic. Design for them on day one.",
+    title: "Validate the connection",
+    body: "Test APIs and endpoints, then investigate logs when an integration does not behave as expected.",
   },
   {
-    title: "Observability before go-live",
-    body: "Correlation ids, per-step metrics, and a replay path. If support can't answer 'where is my order?', it isn't shipped.",
+    title: "Test end to end",
+    body: "Check the whole system flow as part of onboarding and deployment, not just one isolated component.",
   },
   {
-    title: "Cut over boringly",
-    body: "Shadow run, diff, flip a flag, keep the rollback within reach. Exciting go-lives are a planning failure.",
+    title: "Make the handoff clear",
+    body: "Keep technical deployment connected to the people who will use and support the solution.",
   },
 ];
 
 export const toolbox = [
-  { group: "Integration", items: ["REST", "SOAP", "GraphQL", "Webhooks", "gRPC", "EDI / SFTP"] },
-  { group: "Messaging", items: ["Kafka", "RabbitMQ", "Azure Service Bus", "SQS / SNS"] },
-  { group: "Platforms", items: ["MuleSoft", "Boomi", "Mirth", "Workato", "Azure Functions"] },
-  { group: "Languages", items: ["Java", "Python", "TypeScript", "SQL", "Bash"] },
-  { group: "Ops", items: ["Kubernetes", "Terraform", "GitHub Actions", "Datadog", "Grafana"] },
-  { group: "Security", items: ["OAuth2", "mTLS", "JWT", "HMAC signing", "Secret rotation"] },
+  {
+    group: "Web & API testing",
+    items: ["Postman", "REST APIs", "HTML5", "CSS3", "JavaScript (ES6+)", "Node.js", "Express.js"],
+  },
+  {
+    group: "Networking & security",
+    items: ["TCP/IP", "LAN / Wi-Fi", "Check Point Firewall", "Active Directory", "DNS", "DHCP", "NAT"],
+  },
+  {
+    group: "Systems & tools",
+    items: ["Windows Server", "Windows 10 / 11", "VMware Workstation", "Git", "GitHub", "AWS basics"],
+  },
 ];
 
 export const timeline = [
   {
-    period: "2023 — now",
-    role: "Senior Integration Engineer",
-    org: "SAMPLE Company A",
-    note: "Owns the partner integration platform and the on-call rotation that comes with it.",
+    period: "Feb 2026 — Present",
+    role: "Implementation Engineer",
+    org: "Virgio (Ameyam Enterprises Pvt. Ltd.) · Bengaluru",
+    note: "Software deployment and configuration, API testing, integration debugging, client onboarding, and end-to-end system testing.",
   },
   {
-    period: "2021 — 2023",
-    role: "Implementation Engineer",
-    org: "SAMPLE Company B",
-    note: "Enterprise rollouts: discovery, data migration, UAT, go-live, hypercare.",
+    period: "Jan 2025 — Feb 2026",
+    role: "Network Support Engineer",
+    org: "Jetking Infotech · Durg",
+    note: "Tier-1 desktop and network support, LAN/Wi-Fi troubleshooting, system installations, domain configuration, and software provisioning.",
+  },
+];
+
+export const education = [
+  {
+    period: "Jan 2025 — Jun 2026",
+    qualification: "Diploma in Cloud Computing & Cyber Security",
+    institution: "Jetking Learning Center, Durg",
+    detail: "",
+  },
+  {
+    period: "2021 — 2025",
+    qualification: "B.Tech in Computer Science & Engineering",
+    institution: "Kalinga University, Raipur",
+    detail: "CGPA 7.39",
   },
   {
     period: "2019 — 2021",
-    role: "Systems Analyst",
-    org: "SAMPLE Company C",
-    note: "Middleware support, batch jobs, and the first taste of 3am pager duty.",
+    qualification: "Senior Secondary (Class XII)",
+    institution: "B.D. Public School, Patna",
+    detail: "72%",
   },
 ];
 
@@ -342,11 +298,11 @@ export const aboutPhotos: AboutPhoto[] = [
 ];
 
 export const about = {
-  heading: "Systems-minded, detail-obsessed, allergic to surprise go-lives.",
+  heading: "A practical bridge between technology and the people using it.",
   paragraphs: [
-    "SAMPLE: I'm Aakash Kumar. I work in the layer between systems — the adapters, contracts and cutover plans that decide whether a shiny roadmap actually reaches production.",
-    "Most of my work is unglamorous on purpose: mapping fields, arguing about idempotency, running the shadow comparison for one more week. The result is a go-live where nothing interesting happens.",
-    "Outside the day job I take apart APIs for fun and keep a growing collection of other people's error codes.",
+    "I’m Aakash Kumar, an Implementation Engineer based in Bengaluru. I work across software setup, APIs, troubleshooting, and client onboarding—helping turn technical requirements into a working day-to-day system.",
+    "My path runs from hands-on desktop and network support into enterprise software implementation. Along the way, I’ve built a virtual Check Point firewall lab to keep exploring network security in practice.",
+    "I like the details that make a launch feel considered: a configuration that fits, an endpoint that has been checked, and a handoff that leaves people clear on what comes next.",
   ],
-  ps: "ps: if the dashboard is boring, I did my job.",
+  ps: "Good implementation is technical work, translated clearly.",
 };

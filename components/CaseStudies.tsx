@@ -43,7 +43,7 @@ function CaseCard({
                 {study.index}
               </span>
               <span className="h-px flex-1 bg-line" />
-              <span className="eyebrow">{study.year}</span>
+              <span className="eyebrow">{study.period}</span>
             </div>
 
             <h3 className="mt-6 text-2xl leading-tight font-medium tracking-tight md:text-3xl">
@@ -68,14 +68,26 @@ function CaseCard({
               <span className="font-mono text-xs" style={{ color: study.accent }}>
                 {study.metric}
               </span>
-              <Link
-                href={`/work/${study.slug}`}
-                data-cursor="read"
-                className="group inline-flex items-center gap-2 text-sm text-ink"
-              >
-                <span className="link-underline">Read study</span>
-                <span className="transition-transform group-hover:translate-x-1">→</span>
-              </Link>
+              <div className="flex flex-wrap items-center gap-5">
+                {study.repositoryUrl && (
+                  <a
+                    href={study.repositoryUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="link-underline text-sm text-muted hover:text-ink"
+                  >
+                    Source on GitHub ↗
+                  </a>
+                )}
+                <Link
+                  href={`/work/${study.slug}`}
+                  data-cursor="read"
+                  className="group inline-flex items-center gap-2 text-sm text-ink"
+                >
+                  <span className="link-underline">Read study</span>
+                  <span className="transition-transform group-hover:translate-x-1">→</span>
+                </Link>
+              </div>
             </div>
           </div>
 

@@ -75,7 +75,7 @@ export default function WorkGallery({ studies }: { studies: CaseStudy[] }) {
                   </div>
                   <p className="mt-3 text-sm leading-relaxed text-muted">{s.summary}</p>
                   <p className="mt-4 font-mono text-[11px] tracking-[0.16em] text-muted uppercase">
-                    {s.metric} · {s.year}
+                    {s.metric} · {s.period}
                   </p>
                 </Spotlight>
               </Link>

@@ -20,10 +20,10 @@ export default function Home() {
 
       <Section
         id="work"
-        eyebrow="Selected work"
+        eyebrow="Implementation & projects"
         title={
           <>
-            Selected <span className="text-accent italic">work</span>
+            From first setup to <span className="text-accent italic">confident launch.</span>
           </>
         }
         aside={

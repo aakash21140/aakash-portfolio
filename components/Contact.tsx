@@ -35,10 +35,11 @@ export default function Contact() {
           <Magnetic strength={0.4}>
             <a
               href={profile.resumeUrl}
+              download
               data-cursor="open"
               className="inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-sm text-muted transition-colors hover:border-accent/50 hover:text-ink"
             >
-              Résumé <span className="text-xs">↗</span>
+              Download résumé <span className="text-xs">↓</span>
             </a>
           </Magnetic>
         </Reveal>

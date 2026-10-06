@@ -20,18 +20,19 @@ the server-only Next.js image optimizer for static hosting, and exports the site
 
 ## Editing content
 
-**All copy lives in `content/site.ts`.** Nothing is hardcoded in components except
-structural labels. The file currently holds **sample content** — every company name,
-metric and link is invented.
+**All portfolio copy lives in `content/site.ts`.** Profile, work history, education,
+skills, and project details are based on Aakash's résumé and linked public GitHub
+repositories. The work archive distinguishes professional implementation experience
+from personal projects and does not claim client results or metrics that are not documented.
 
-- `SAMPLE_CONTENT = true` renders the bottom-right "sample content" badge and the
-  "replace asset" labels on image placeholders. Flip it to `false` once real content is in.
-- `profile` — name, headline (wrap a word in `{braces}` to accent it), résumé URL, socials.
-- `stats`, `marqueeTop`, `marqueeWarn`, `contact` — strips and CTA copy.
+- `profile` — name, headline (wrap a word in `{braces}` to accent it), location, socials,
+  and the public résumé download.
+- `stats`, `marqueeTop`, `marqueeWarn`, `contact` — homepage summary and CTA copy.
 - `caseStudies[]` — each entry generates a card on `/`, a tile on `/work`, and a static
   page at `/work/<slug>` (`generateStaticParams`).
-- `process`, `toolbox`, `timeline`, `about`, and `aboutPhotos` — lower sections and About
-  content. `aboutPhotos` points to the local About gallery images in `public/about/`.
+- `process`, `toolbox`, `timeline`, `education`, `about`, and `aboutPhotos` — lower
+  sections and About content. `aboutPhotos` points to the local About gallery images in
+  `public/about/`.
 
 ## Images
 

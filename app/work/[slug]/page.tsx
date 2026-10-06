@@ -35,7 +35,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
             ← All work
           </Link>
           <p className="eyebrow mt-10">
-            {study.index} · {study.year}
+            {study.index} · {study.period}
           </p>
           <h1 className="display mt-5 text-[clamp(2rem,5.5vw,3.8rem)]">{study.title}</h1>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted md:text-lg">
@@ -46,8 +46,8 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
         <Reveal delay={0.08} className="mt-10 grid gap-px border-y border-line py-6 sm:grid-cols-3">
           {[
             { k: "Role", v: study.role },
-            { k: "Duration", v: study.duration },
-            { k: "Headline result", v: study.metric },
+            { k: "Setting", v: study.setting },
+            { k: "Focus", v: study.metric },
           ].map((row) => (
             <div key={row.k}>
               <p className="eyebrow">{row.k}</p>
@@ -55,6 +55,19 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
             </div>
           ))}
         </Reveal>
+
+        {study.repositoryUrl && (
+          <Reveal delay={0.1} className="mt-5">
+            <a
+              href={study.repositoryUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="link-underline font-mono text-[11px] tracking-[0.18em] text-muted uppercase hover:text-ink"
+            >
+              View source on GitHub ↗
+            </a>
+          </Reveal>
+        )}
 
         <Reveal delay={0.12} className="mt-12">
           <Slot label={study.imageLabel} accent={study.accent} ratio="aspect-[16/9]" />
@@ -78,7 +91,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
         </Reveal>
 
         <Reveal className="mt-16">
-          <h2 className="eyebrow">The pipeline</h2>
+          <h2 className="eyebrow">The setup</h2>
           <ol className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-3">
             {study.flow.map((step, i) => (
               <li key={step} className="flex items-center gap-3">
@@ -113,7 +126,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
         </div>
 
         <Reveal className="mt-16 rounded-3xl border border-line bg-panel/50 p-7 md:p-10">
-          <h2 className="eyebrow">Outcome</h2>
+          <h2 className="eyebrow">Areas covered</h2>
           <dl className="mt-7 grid gap-8 sm:grid-cols-3">
             {study.outcome.map((o) => (
               <div key={o.label}>
