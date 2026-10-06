@@ -4,7 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { assetPath, profile } from "@/content/site";
+import { assetPath } from "@/content/assetPath";
+import { profile } from "@/content/site";
 import Magnetic from "./Magnetic";
 
 const rise = {

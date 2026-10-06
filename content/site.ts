@@ -8,11 +8,7 @@
  * and the placeholder labels on image slots.
  * ==========================================================================*/
 
-const assetBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-
-export function assetPath(path: string) {
-  return `${assetBasePath}${path}`;
-}
+import { assetPath } from "./assetPath";
 
 export const SAMPLE_CONTENT = true;
 
